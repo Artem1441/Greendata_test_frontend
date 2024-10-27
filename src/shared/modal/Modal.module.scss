@@ -1,0 +1,25 @@
+// Modal.module.scss
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-dark-transparent);
+  z-index: 2000;
+  cursor: pointer;
+
+  &_content {
+    background-color: var(--color-main-white);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2001;
+    cursor: default;
+    padding: 120px;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,20 @@
+// EmployeeHeader.module.scss
+
+.employeeHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 60px;
+
+  &_flex {
+    display: flex;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,58 @@
+// EmployeeFormField.module.scss
+
+.employeeFormField {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  height: calc(100vh - 60px);
+  width: calc(100vw - 300px);
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    label {
+      font-size: 16px;
+      color: #444;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+
+      &:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        outline: none;
+      }
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+    }
+  }
+
+  &_flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &_error {
+    font-size: 14px;
+    color: red;
+  }
+}
