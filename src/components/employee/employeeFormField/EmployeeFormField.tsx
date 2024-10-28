@@ -282,9 +282,6 @@ const EmployeeFormField: FC<IEmployeeFormFieldProps> = ({}): JSX.Element => {
                           );
                         }}
                       >
-                        <option disabled={true} value="">
-                          Выберите должность
-                        </option>
                         {[colleagues[num - 1], ...filteredEmployees].map(
                           (employee: IEmployee) => (
                             <option key={employee.id} value={employee.id}>
@@ -323,7 +320,7 @@ const EmployeeFormField: FC<IEmployeeFormFieldProps> = ({}): JSX.Element => {
                       }}
                     >
                       <option disabled={true} value="">
-                        Выберите должность
+                        Выберите коллегу
                       </option>
                       {filteredEmployees.map((employee: IEmployee) => (
                         <option key={employee.id} value={employee.id}>
