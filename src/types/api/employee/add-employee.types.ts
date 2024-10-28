@@ -8,6 +8,7 @@ export interface IApiAddEmployeeRequest {
   birthDate: string;
   gender: "male" | "female";
   isFired: boolean;
+  colleagues: IEmployee[]
 }
 
 export interface IApiAddEmployeeResponse extends IEmployee {}

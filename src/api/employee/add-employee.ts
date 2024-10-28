@@ -8,13 +8,17 @@ import {
   IApiAddEmployeeResponse,
 } from "@/types/api/employee/add-employee.types";
 
-// POST
+/*
+POST запрос
+Запрос на добавление работника в БД
+*/
 const addEmployeeApi = async ({
   fullName,
   position,
   birthDate,
   gender,
   isFired,
+  colleagues
 }: IApiAddEmployeeRequest): Promise<IApiAddEmployeeResponse> => {
   try {
     const response = await axios.post(`${api_url}/${add_employee}`, {
@@ -23,6 +27,7 @@ const addEmployeeApi = async ({
       birthDate,
       gender,
       isFired,
+      colleagues
     });
     return response.data;
   } catch (error) {

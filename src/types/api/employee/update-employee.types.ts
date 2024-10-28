@@ -2,13 +2,6 @@
 
 import IEmployee from "@/types/models/IEmployee";
 
-export interface IApiUpdateEmployeeRequest {
-  id: string;
-  fullName: string;
-  position: string;
-  birthDate: string;
-  gender: "male" | "female";
-  isFired: boolean;
-}
+export interface IApiUpdateEmployeeRequest extends IEmployee {}
 
 export interface IApiUpdateEmployeeResponse extends IEmployee {}

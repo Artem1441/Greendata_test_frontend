@@ -8,7 +8,10 @@ import {
   IApiGetEmployeeResponse,
 } from "@/types/api/employee/get-employee.types";
 
-// GET
+/*
+GET запрос
+Запрос на получение работника из БД по id
+*/
 const getEmployeeApi = async ({
   id,
 }: IApiGetEmployeeRequest): Promise<IApiGetEmployeeResponse> => {

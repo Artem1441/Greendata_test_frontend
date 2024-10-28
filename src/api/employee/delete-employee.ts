@@ -5,7 +5,10 @@ import api_url, { delete_employee } from "@/constants/apiRoutes";
 import { apiDeleteEmployeeErrorMessage } from "@/constants/messages";
 import { IApiDeleteEmployeeRequest, IApiDeleteEmployeeResponse } from "@/types/api/employee/delete-employee.types";
 
-// DELETE
+/*
+DELETE запрос
+Запрос на удаление работника из БД по id
+*/
 const deleteEmployeeApi = async ({
   id,
 }: IApiDeleteEmployeeRequest): Promise<IApiDeleteEmployeeResponse> => {

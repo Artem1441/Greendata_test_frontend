@@ -7,6 +7,7 @@ interface IEmployee {
   birthDate: string;
   gender: "male" | "female";
   isFired: boolean;
+  colleagues: IEmployee []
 }
 
 export default IEmployee;

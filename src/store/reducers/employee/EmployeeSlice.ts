@@ -4,7 +4,12 @@ import IEmployee from "@/types/models/IEmployee";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 /* 
-activeId = -1 - добавление нового работника
+Если activeId = null - показ пустого окна в компоненте EmployeeFormField
+Если activeId = -1 - добавление данных нового работника в компоненте EmployeeFormField
+Если activeId число (>0) - обновление данных работника в компоненте EmployeeFormField
+Также activeId используется для показа выбранного (активного) работника в компоненте EmployeeSidebarCard 
+employees - общее кол-во работников. Его можно хранить без динамики (пагинации), т.к кол-во рабоников не может перевалить за высокое кол-во, из-за которого может лагать интерфейс (вряд ли их будет больше 1000 - число, при котором с интерфейсом всё ещё будет нормально)
+Остальные поля - поля элемента БД типа IEmployee
  */
 
 interface IEmployeeState {
@@ -16,7 +21,7 @@ interface IEmployeeState {
   birthDate: string;
   gender: "male" | "female";
   isFired: boolean;
-  // colleagues?: string[];
+  colleagues: IEmployee[];
 }
 
 const initialState: IEmployeeState = {
@@ -28,7 +33,7 @@ const initialState: IEmployeeState = {
   birthDate: "",
   gender: "male",
   isFired: false,
-  // colleagues: [],
+  colleagues: [],
 };
 
 export const employeeSlice = createSlice({
@@ -57,6 +62,7 @@ export const employeeSlice = createSlice({
       state.birthDate = action.payload.birthDate;
       state.gender = action.payload.gender;
       state.isFired = action.payload.isFired;
+      state.colleagues = action.payload.colleagues;
     },
     setFullNameAction: (
       state: IEmployeeState,
@@ -88,6 +94,23 @@ export const employeeSlice = createSlice({
     ) => {
       state.isFired = action.payload;
     },
+    setColleguesAction: (
+      state: IEmployeeState,
+      action: PayloadAction<{ employee: IEmployee; index: number }>
+    ) => {
+      const { employee, index } = action.payload;
+      if (state.colleagues[index]) {
+        state.colleagues[index] = employee;
+      } else {
+        state.colleagues = [...state.colleagues, employee];
+      }
+    },
+    setRemoveCollegueAction: (
+      state: IEmployeeState,
+      action: PayloadAction<number>
+    ) => {
+      state.colleagues.splice(action.payload, 1);
+    },
     setResetEmployeeAction: (state: IEmployeeState) => {
       state.id = null;
       state.fullName = "";
@@ -95,6 +118,7 @@ export const employeeSlice = createSlice({
       state.birthDate = "";
       state.gender = "male";
       state.isFired = false;
+      state.colleagues = [];
     },
   },
 });
